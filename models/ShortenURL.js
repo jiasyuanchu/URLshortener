@@ -7,7 +7,7 @@ const ShortenURLSchema = new Schema({
     type: String,
     required: true
   },
-  randomSerialNumber: {
+  keyword: {
     type: String,
     required: true
   },

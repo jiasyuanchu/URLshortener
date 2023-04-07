@@ -1,0 +1,17 @@
+{
+  
+  "plugins": [
+    "import"
+  ],
+  "rules": {
+    "import/no-cycle": "error",
+    // 定義其他的ESLint規則
+  }
+  
+}
+
+{
+    "parserOptions": {
+      "ecmaVersion": 6
+    }  
+}
