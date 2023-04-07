@@ -15,19 +15,9 @@ app.set('view engine', 'hbs')
 app.use(express.static('public'))// setting static files
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
+app.use(routes);//use the routers
 
-//路由設定：輸入URL後導到copy page
-app.get('/copy', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
-    .lean()
-    .then(record => res.render('copy', { record }))
-    .catch(error => console.log(error))
-})
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
-})
+}) //開啟監聽
