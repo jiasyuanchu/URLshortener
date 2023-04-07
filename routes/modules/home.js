@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const ShortenURL = require("../models/shortenURL");
+const ShortenURL = require("../../models/ShortenURL");
 
 //設定路由：根目錄
 router.get('/', (req, res) => {

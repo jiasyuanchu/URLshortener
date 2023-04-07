@@ -1,16 +1,45 @@
 <div class="p-2">
-  {{!-- {{#each InputURL}} --}}
 
-  <form action="/records" method="POST">
-    <div class="form-group">
-      <label for="exampleInputEmail1"></label>
-      <input type="email" class="form-control mb-2" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Input URL here" name="URL">
+{{!-- the input part  --}}
+
+  <form action="/" method="POST">
+  <div>
+    <p style="font-weight-bold">Original URL:</p>
+  </div>
+    <div class="row mt-2">
+      <div class="input-group mb-3">
+        <input type="URL" 
+               class="form-control mb-1" 
+               id="originalURL" 
+               placeholder="Please input URL here" 
+               name="originalURL"
+               value="{{originalURL}}"
+               required>
+          <button 
+            type="submit"
+            class="btn btn-primary"
+            id="shorten-btn"
+            >Shorten</button>
+      </div>
     </div>
-
-    <a class="btn btn-primary" type="submit" >Shorten</a>
   </form>
 
+{{!-- the output part --}}
+
+{{#if newURL}}
+  <p style="font-weight-bold">New URL:</p>
+  <div class="input-group mb-3">
+    <input 
+      type="text" 
+      class="form-control" 
+      id="newURL" 
+      value="{{newURL}}" 
+      disabled />
+    <button 
+      class="btn btn-outline-primary" 
+      type="button" 
+      id="copy-btn">Copy</button>
+  </div>
+{{/if}}
+
 </div>
-{{!--
-{{/each}} --}}
