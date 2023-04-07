@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const ShortenURL = require("../models/shortenURL");
 
-
-
+//設定路由：根目錄
 router.get('/', (req, res) => {
   res.render('index')
 })
@@ -15,3 +15,5 @@ router.get('/copy', (req, res) => {
     .then(record => res.render('copy', { record }))
     .catch(error => console.log(error))
 })
+
+  module.exports = router;

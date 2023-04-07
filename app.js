@@ -1,7 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const Record = require('./models/record')
+const ShortenURL = require('./models/ShortenURL')
 
 
 const app = express()
@@ -16,7 +16,6 @@ app.use(express.static('public'))// setting static files
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(routes);//use the routers
-
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
