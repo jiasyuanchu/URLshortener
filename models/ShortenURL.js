@@ -7,7 +7,7 @@ const ShortenURLSchema = new Schema({
     type: String,
     required: true
   },
-  keyword: {
+  path: {
     type: String,
     required: true
   },

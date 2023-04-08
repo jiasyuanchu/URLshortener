@@ -15,17 +15,17 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const originalURL = req.body.originalURL
   // res.send('Got a POST request')
-  let keyword = generateRandomFiveLetter()
-  const newURL = SERVER + keyword;
+  let path = generateRandomFiveLetter()
+  const newURL = SERVER + path;
   console.log(newURL)
   //先比對此五碼是否有被用過
-  function checkKeyword() {
+  function checkPath() {
     ShortenURL
-      .exists({ keyword })
+      .exists({ path })
       .then((URLs) => {
         if (URLs) {
           //先做一個出來拿去檢查
-          keyword = generateRandomFiveLetter();
+          path = generateRandomFiveLetter();
           // checkKeyword();//呼叫自己重新檢查
         } else {
           ShortenURL.findOne({ originalURL })
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
                 });
                 //檢查後確認還沒被用過的話
               } else {
-                ShortenURL.create({ originalURL, keyword, newURL })
+                ShortenURL.create({ originalURL, path, newURL })
                   .then(() => {
                     res.render("index", { originalURL, newURL });
                   })
@@ -49,18 +49,30 @@ router.post('/', (req, res) => {
         }
       });
     }
-    checkKeyword();
+    checkPath();
 })
 
 //輸入短網址後導回原網址
-router.get("/:keyword", (req, res) => {
-  let keyword = req.params.keyword;
-  ShortenURL.findOne({ keyword })
+router.get("/:path", (req, res) => {
+  // console.log(req.params)
+  let path = req.params.path;
+  ShortenURL.findOne({ path })
+    // .then((result) => console.log(result.originalURL))
     .lean()
-    .then((URL) => res.redirect(URL.originalURL))
-    .catch((error) => console.log(error));
+    .then((result) => {
+      // console.log(result.originalURL)
+      const redirectURL = result.originalURL
+      if (redirectURL.startsWith('http://') || redirectURL.startsWith('https://')) {
+        res.redirect(redirectURL);
+      } else {
+        res.redirect('http://' + redirectURL);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(404).send("URL not found");
+    });
 });
-
 
 //短網址末五碼產生器
 function randomIndex(wordBank) {
