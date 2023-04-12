@@ -1,20 +1,20 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 //schema內容項目待確認
 const ShortenURLSchema = new Schema({
   originalURL: {
     type: String,
-    required: true
+    required: true,
   },
   path: {
     type: String,
-    required: true
+    required: true,
   },
   newURL: {
     type: String,
-    required: true
+    required: true,
   },
-})
+});
 
-module.exports = mongoose.model('ShortenURL', ShortenURLSchema)
+module.exports = mongoose.model("ShortenURL", ShortenURLSchema);

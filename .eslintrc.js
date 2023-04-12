@@ -1,8 +1,8 @@
 module.exports = {
   // ...
-  "plugins": ["import"],
-  "rules": {
+  plugins: ["import"],
+  rules: {
     // ...
     "import/no-cycle": "error",
   },
-}
+};

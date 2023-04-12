@@ -1,6 +1,6 @@
 <div class="p-2">
 
-  {{!-- the input part --}}
+  {{! the input part }}
 
   <form action="/" method="POST" id="inputURLForm" novalidate>
     <div>
@@ -8,38 +8,52 @@
     </div>
     <div class="row mt-2">
       <div class="input-group mb-3">
-        <input type="URL" class="form-control mb-1" id="originalURL" placeholder="Please input URL here"
-          name="originalURL" value="{{originalURL}}" required>
-        <button type="submit" class="btn btn-primary" id="shorten-btn">Shorten</button>
+        <input
+          type="URL"
+          class="form-control mb-1"
+          id="originalURL"
+          placeholder="Please input URL here"
+          name="originalURL"
+          value="{{originalURL}}"
+          required
+        />
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="shorten-btn"
+        >Shorten</button>
       </div>
     </div>
   </form>
 
-  {{!-- the output part --}}
+  {{! the output part }}
 
   {{#if newURL}}
-  <p style="font-weight-bold">New URL:</p>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" id="newURL" name="newURL" value="{{newURL}}" disabled />
-    <button class="btn btn-outline-primary" type="button" id="copy-btn">Copy</button>
-  </div>
+    <p style="font-weight-bold">New URL:</p>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="newURL"
+        name="newURL"
+        value="{{newURL}}"
+        disabled
+      />
+      <button
+        class="btn btn-outline-primary"
+        type="button"
+        id="copy-btn"
+      >Copy</button>
+    </div>
   {{/if}}
-
 
 </div>
 
 <script>
-  //按鈕的文字複製功能
-  const copyButton = document.getElementById('copy-btn');
+  //按鈕的文字複製功能 const copyButton = document.getElementById('copy-btn');
   const textToCopy = document.getElementById('newURL');
-
   copyButton.addEventListener('click', function (event) {
-    event.preventDefault();
-    textToCopy.select();
-    console.log(textToCopy.value)
-    navigator.clipboard.writeText(textToCopy.value)
-      .then(() => {
-        copyButton.innerHTML = "Copied!";
-      })
-  })
+  event.preventDefault(); textToCopy.select(); console.log(textToCopy.value)
+  navigator.clipboard.writeText(textToCopy.value) .then(() => {
+  copyButton.innerHTML = "Copied!"; }) })
 </script>
