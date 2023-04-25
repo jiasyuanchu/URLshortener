@@ -50,10 +50,11 @@
 </div>
 
 <script>
-  //按鈕的文字複製功能 const copyButton = document.getElementById('copy-btn');
+  //按鈕的文字複製功能 
+  const copyButton = document.getElementById('copy-btn');
   const textToCopy = document.getElementById('newURL');
   copyButton.addEventListener('click', function (event) {
-  event.preventDefault(); textToCopy.select(); console.log(textToCopy.value)
-  navigator.clipboard.writeText(textToCopy.value) .then(() => {
-  copyButton.innerHTML = "Copied!"; }) })
+    event.preventDefault(); textToCopy.select(); console.log(textToCopy.value)
+    navigator.clipboard.writeText(textToCopy.value) .then(() => {
+    copyButton.innerHTML = "Copied!"; }) })
 </script>

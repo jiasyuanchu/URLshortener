@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
   const originalURL = req.body.originalURL;
   let path = generateRandomFiveLetter();
   const newURL = SERVER + path;
-  checkPath();
+  checkPath(path, originalURL, newURL, res);//將 res 變數傳遞進 checkPath 函數
 });
 
 //輸入短網址後導回原網址
